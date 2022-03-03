@@ -57,9 +57,11 @@ if (!class_exists('AlecaddPlugin')) {
             return $links;
         }
 
+
         function admin_index() {
             require_once plugin_dir_path(__FILE__) . 'templates/admin.php';
         }
+
 
         function custom_post_type() {
             register_post_type('book', ['public' => true, 'label' => 'Books']);
@@ -75,10 +77,10 @@ if (!class_exists('AlecaddPlugin')) {
 
 
     // Activate the plugin.
-    require_once plugin_dir_path(__FILE__) . 'inc/alecadd-plugin-activate.php';
+    require_once plugin_dir_path(__FILE__) . 'inc/Base/Activate.php';
     register_activation_hook(__FILE__, array('AlecaddPluginActivate', 'activate'));
 
     // Deactivate the plugin.
-    require_once plugin_dir_path(__FILE__) . 'inc/alecadd-plugin-deactivate.php';
+    require_once plugin_dir_path(__FILE__) . 'inc/Base/Deactivate.php';
     register_deactivation_hook(__FILE__, array('AlecaddPluginDeactivate', 'deactivate'));
 }
