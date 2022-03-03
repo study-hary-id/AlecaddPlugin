@@ -45,5 +45,11 @@ if (class_exists('AlecaddPlugin')) {
     $alecaddPlugin->register();
 }
 
-register_activation_hook(__FILE__, array($alecaddPlugin, 'activate'));
-register_deactivation_hook(__FILE__, array($alecaddPlugin, 'deactivate'));
+
+// Activate the plugin.
+require_once plugin_dir_path(__FILE__) . 'inc/alecadd-plugin-activate.php';
+register_activation_hook(__FILE__, array('AlecaddPluginActivate', 'activate'));
+
+// Deactivate the plugin.
+require_once plugin_dir_path(__FILE__) . 'inc/alecadd-plugin-deactivate.php';
+register_deactivation_hook(__FILE__, array('AlecaddPluginDeactivate', 'deactivate'));
