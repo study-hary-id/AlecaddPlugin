@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 
 class AlecaddPlugin {
     function __construct() {
-        add_action('init', array($this, 'custom_post_type'));
+        $this->create_post_type();
     }
 
     function register() {
@@ -37,6 +37,10 @@ class AlecaddPlugin {
 
     function custom_post_type() {
         register_post_type('book', ['public' => true, 'label' => 'Books']);
+    }
+
+    function create_post_type() {
+        add_action('init', array($this, 'custom_post_type'));
     }
 
     function enqueue() {
