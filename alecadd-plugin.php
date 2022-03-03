@@ -22,6 +22,10 @@ class AlecaddPlugin {
         add_action('init', array($this, 'custom_post_type'));
     }
 
+    function register() {
+        add_action('admin_enqueue_scripts', array($this, 'enqueue'));
+    }
+
     function activate() {
         $this->custom_post_type();
         flush_rewrite_rules();
@@ -34,10 +38,16 @@ class AlecaddPlugin {
     function custom_post_type() {
         register_post_type('book', ['public' => true, 'label' => 'Books']);
     }
+
+    function enqueue() {
+        wp_enqueue_style('pluginstyle', plugins_url('/assets/css/style.css', __FILE__));
+        wp_enqueue_script('pluginstyle', plugins_url('/assets/js/script.js', __FILE__));
+    }
 }
 
 if (class_exists('AlecaddPlugin')) {
     $alecaddPlugin = new AlecaddPlugin;
+    $alecaddPlugin->register();
 }
 
 register_activation_hook(__FILE__, array($alecaddPlugin, 'activate'));
