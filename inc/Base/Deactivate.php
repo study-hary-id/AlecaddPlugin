@@ -1,6 +1,6 @@
 <?php
 /**
- * @package AlecaddPlugin
+ * @package AlecaddPluginCustom
  */
 
 class AlecaddPluginDeactivate {

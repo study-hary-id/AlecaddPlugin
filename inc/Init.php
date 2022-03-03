@@ -1,8 +1,8 @@
 <?php
 /**
- * @package AlecaddPlugin
+ * @package AlecaddPluginCustom
  */
 
 class Init {
-    
+    public static function register_services() {}
 }
