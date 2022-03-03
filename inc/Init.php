@@ -24,9 +24,11 @@ final class Init {
     public static function get_services() {
         require_once PLUGIN_PATH . 'inc/Pages/Admin.php';
         require_once PLUGIN_PATH . 'inc/Base/Enqueue.php';
+        require_once PLUGIN_PATH . 'inc/Base/SettingsLinks.php';
         return [
             Admin::class,
-            Enqueue::class
+            Enqueue::class,
+            SettingsLinks::class
         ];
     }
 
