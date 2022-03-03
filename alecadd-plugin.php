@@ -26,15 +26,6 @@ class AlecaddPlugin {
         add_action('admin_enqueue_scripts', array($this, 'enqueue'));
     }
 
-    function activate() {
-        $this->custom_post_type();
-        flush_rewrite_rules();
-    }
-
-    function deactivate() {
-        flush_rewrite_rules();
-    }
-
     function custom_post_type() {
         register_post_type('book', ['public' => true, 'label' => 'Books']);
     }
