@@ -17,7 +17,10 @@ if (!defined('ABSPATH')) {
     die('-1');
 }
 
-require_once plugin_dir_path(__FILE__) . 'inc/Init.php';
+define('PLUGIN_PATH', plugin_dir_path(__FILE__));
+define('PLUGIN_URL', plugin_dir_url(__FILE__));
+
+require_once PLUGIN_PATH . 'inc/Init.php';
 
 if (class_exists('Init')) {
     Init::register_services();
