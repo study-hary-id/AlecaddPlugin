@@ -33,6 +33,21 @@ if (!class_exists('AlecaddPlugin')) {
             wp_enqueue_script('pluginstyle', plugins_url('/assets/js/script.js', __FILE__));
         }
 
+        function add_admin_pages() {
+            add_menu_page(
+                'Alecadd Plugin',
+                'Alecadd',
+                'manage_options',
+                'alecadd_plugin',
+                array($this, 'admin_index'),
+                'dashicons-store',
+                110
+            );
+        }
+
+        function admin_index() {
+            echo "Hello, World!";
+        }
 
         function custom_post_type() {
             register_post_type('book', ['public' => true, 'label' => 'Books']);
