@@ -3,7 +3,7 @@
  * @package AlecaddPlugin
  */
 
-class AlecaddPlugincDeactivate {
+class AlecaddPluginDeactivate {
     public static function deactivate() {
         flush_rewrite_rules();
     }
