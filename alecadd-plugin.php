@@ -26,6 +26,11 @@ if (!class_exists('AlecaddPlugin')) {
             $this->create_post_type();
         }
 
+        /**
+         * Add/register new action or filter to each hooks.
+         * 
+         * @return void
+         */
         function register() {
             add_action('admin_enqueue_scripts', array($this, 'enqueue'));
 
@@ -34,11 +39,21 @@ if (!class_exists('AlecaddPlugin')) {
             add_filter("plugin_action_links_$this->plugin", array($this, 'settings_link'));
         }
 
+        /**
+         * Enqueue stylesheet and javascript files.
+         * 
+         * @return void
+         */
         function enqueue() {
             wp_enqueue_style('pluginstyle', plugins_url('/assets/css/style.css', __FILE__));
             wp_enqueue_script('pluginstyle', plugins_url('/assets/js/script.js', __FILE__));
         }
 
+        /**
+         * Add/register new menu on admin side-bar.
+         * 
+         * @return void
+         */
         function add_admin_pages() {
             add_menu_page(
                 'Alecadd Plugin',
@@ -51,6 +66,12 @@ if (!class_exists('AlecaddPlugin')) {
             );
         }
 
+        /**
+         * Add custom link onto plugin list.
+         * 
+         * @param array $links  List of necessary links.
+         * @return array        Return list after added a new link element.
+         */
         function settings_link($links) {
             $settings_link = '<a href="admin.php?page=alecadd_plugin">Settings</a>';
             array_push($links, $settings_link);
@@ -63,24 +84,34 @@ if (!class_exists('AlecaddPlugin')) {
         }
 
 
+        /**
+         * Register new custom post type.
+         * 
+         * @return void
+         */
         function custom_post_type() {
             register_post_type('book', ['public' => true, 'label' => 'Books']);
         }
 
+        /**
+         * Initialize custom post type by calling init hook.
+         * 
+         * @return void
+         */
         protected function create_post_type() {
             add_action('init', array($this, 'custom_post_type'));
-        }        
+        }
     }
 
     $alecaddPlugin = new AlecaddPlugin;
     $alecaddPlugin->register();
 
 
-    // Activate the plugin.
+    // Register activation the plugin.
     require_once plugin_dir_path(__FILE__) . 'inc/Base/Activate.php';
     register_activation_hook(__FILE__, array('AlecaddPluginActivate', 'activate'));
 
-    // Deactivate the plugin.
+    // Register deactivation the plugin.
     require_once plugin_dir_path(__FILE__) . 'inc/Base/Deactivate.php';
     register_deactivation_hook(__FILE__, array('AlecaddPluginDeactivate', 'deactivate'));
 }
