@@ -3,6 +3,8 @@
  * @package AlecaddPluginCustom
  */
 
+require_once PLUGIN_PATH . 'inc/Base/BaseController.php';
+
 final class Init {
     /**
      * Initialize a class.
