@@ -23,16 +23,25 @@ require_once PLUGIN_PATH . 'inc/Init.php';
 require_once PLUGIN_PATH . 'inc/Base/Activation.php';
 require_once PLUGIN_PATH . 'inc/Base/Deactivation.php';
 
+/**
+ * Handle activations of the plugin.
+ */
 function activate_alecadd_plugin() {
     Activation::activate();
 }
 register_activation_hook(__FILE__, 'activate_alecadd_plugin');
 
+/**
+ * Handle deactivations of the plugin.
+ */
 function deactivate_alecadd_plugin() {
     Deactivation::deactivate();
 }
 register_deactivation_hook(__FILE__, 'deactivate_alecadd_plugin');
 
+/**
+ * Initiliaze and register all of the services.
+ */
 if (class_exists('Init')) {
     Init::register_services();
 }

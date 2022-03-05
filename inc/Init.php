@@ -10,7 +10,6 @@ final class Init {
      * Initialize a class.
      * 
      * @param class $class      Class from the services array.
-     * 
      * @return class instance   New instance of a class.
      */
     private static function instantiate($class) {

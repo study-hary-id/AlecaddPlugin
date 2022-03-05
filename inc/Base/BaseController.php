@@ -3,6 +3,9 @@
  * @package AlecaddPluginCustom
  */
 
+/**
+ * BaseController is an abstraction of Base Class and Pages.
+ */
 class BaseController {
     public $plugin_path;
     public $plugin_url;
