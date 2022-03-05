@@ -1,6 +1,6 @@
 <?php
 /**
- * @package AlecaddPlugin
+ * @package AlecaddPluginCustom
  */
 
 if (!defined('WP_UNINSTALL_PLUGIN')) {

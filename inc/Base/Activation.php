@@ -1,9 +1,9 @@
 <?php
 /**
- * @package AlecaddPlugin
+ * @package AlecaddPluginCustom
  */
 
-class AlecaddPluginActivate {
+class Activation {
     public static function activate() {
         flush_rewrite_rules();
     }
