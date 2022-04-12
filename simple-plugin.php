@@ -1,6 +1,19 @@
 <?php
 /**
- * @package AlecaddPlugin
+ * @package SimplePlugin
+ */
+/**
+ * Plugin Name:       Simple Plugin
+ * Plugin URI:        https://github.com/study-hary-id/SimplePluginTemplate
+ * Description:       Handle the basics with this plugin.
+ * Version:           1.0.0
+ * Requires at least: 5.2
+ * Requires PHP:      7.4
+ * Author:            Muhammad Haryansyah
+ * Author URI:        https://study-hary-id.github.io
+ * License:           GPL v2 or later
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain:       simple-plugin
  */
 /*
 Plugin Name:    Alecadd Plugin
