@@ -1,0 +1,19 @@
+{
+  "name": "haryansyah/simple-plugin",
+  "description": "Handle the basics with this plugin, based on classes as services.",
+  "type": "project",
+  "license": "GPL",
+  "authors": [
+    {
+      "name": "study-hary-id",
+      "email": "haryansyah.study.id@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Inc\\": "./inc"
+    }
+  }
+}
