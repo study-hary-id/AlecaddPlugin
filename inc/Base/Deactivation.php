@@ -1,6 +1,6 @@
 <?php
 /**
- * @package AlecaddPluginCustom
+ * @package SimplePlugin
  */
 
 class Deactivation {
