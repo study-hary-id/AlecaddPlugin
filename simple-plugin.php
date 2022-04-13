@@ -52,23 +52,6 @@ if ( !class_exists( 'SimplePlugin' ) ) {
         }
 
         /**
-         * Listener uses when activate the plugin.
-         */
-        function activate()
-        {
-            flush_rewrite_rules();
-        }
-
-        /**
-         * Listener uses when deactivate the plugin.
-         */
-        function deactivate()
-        {
-            flush_rewrite_rules();
-        }
-
-
-        /**
          * Add/register new action or filter to each hooks.
          *
          * @return void
@@ -83,6 +66,22 @@ if ( !class_exists( 'SimplePlugin' ) ) {
             add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 
             add_action( 'admin_menu', array( $this, 'add_admin_pages' ));
+        }
+
+        /**
+         * Listener uses when activate the plugin.
+         */
+        function activate()
+        {
+            flush_rewrite_rules();
+        }
+
+        /**
+         * Listener uses when deactivate the plugin.
+         */
+        function deactivate()
+        {
+            flush_rewrite_rules();
         }
 
 
