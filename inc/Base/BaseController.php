@@ -2,6 +2,7 @@
 /**
  * @package SimplePlugin
  */
+namespace Inc\Base;
 
 /**
  * BaseController is an abstraction of Base Class and Pages.

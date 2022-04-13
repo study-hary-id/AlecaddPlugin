@@ -34,17 +34,15 @@ if ( !defined('ABSPATH' ) ) {
     die( '-1' );
 }
 
-define( 'PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
-
-require_once PLUGIN_PATH . 'inc/Init.php';
-require_once PLUGIN_PATH . 'inc/Base/Activation.php';
-require_once PLUGIN_PATH . 'inc/Base/Deactivation.php';
+if ( file_exists( dirname(__FILE__) . '/vendor/autoload.php' ) ) {
+	require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+}
 
 /**
  * Handle activations of the plugin.
  */
 function activate_simple_plugin() {
-    Activation::activate();
+    Inc\Base\Activation::activate();
 }
 register_activation_hook( __FILE__, 'activate_simple_plugin' );
 
@@ -52,13 +50,13 @@ register_activation_hook( __FILE__, 'activate_simple_plugin' );
  * Handle deactivations of the plugin.
  */
 function deactivate_simple_plugin() {
-    Deactivation::deactivate();
+    Inc\Base\Deactivation::deactivate();
 }
 register_deactivation_hook( __FILE__, 'deactivate_simple_plugin' );
 
 /**
  * Initialize and register all of the services.
  */
-if ( class_exists('Init') ) {
-    Init::register_services();
+if ( class_exists('Inc\\Init') ) {
+    Inc\Init::register_services();
 }

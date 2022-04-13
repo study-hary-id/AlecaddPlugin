@@ -2,8 +2,7 @@
 /**
  * @package SimplePlugin
  */
-
-require_once PLUGIN_PATH . 'inc/Base/BaseController.php';
+namespace Inc;
 
 final class Init
 {
@@ -26,13 +25,10 @@ final class Init
      */
     public static function get_services()
     {
-        require_once PLUGIN_PATH . 'inc/Pages/Admin.php';
-        require_once PLUGIN_PATH . 'inc/Base/Enqueue.php';
-        require_once PLUGIN_PATH . 'inc/Base/SettingsLinks.php';
         return [
-            Admin::class,
-            Enqueue::class,
-            SettingsLinks::class
+            Pages\Admin::class,
+            Base\Enqueue::class,
+            Base\SettingsLinks::class
         ];
     }
 

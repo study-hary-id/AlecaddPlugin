@@ -2,6 +2,7 @@
 /**
  * @package SimplePlugin
  */
+namespace Inc\Base;
 
 class SettingsLinks extends BaseController
 {
