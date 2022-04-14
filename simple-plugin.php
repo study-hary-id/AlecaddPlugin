@@ -33,11 +33,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 Copyright 2005-2015 Automattic, Inc.
 */
 
-if ( !defined( 'ABSPATH' ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
     die('-1');
 }
 
-if ( !class_exists( 'SimplePlugin' ) ) {
+if ( ! class_exists( 'SimplePlugin' ) ) {
     /**
      * Class SimplePlugin is a constructor for this plugin.
      */
