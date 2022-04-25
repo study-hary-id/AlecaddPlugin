@@ -3,7 +3,7 @@
  * @package SimplePlugin
  */
 
-require_once PLUGIN_PATH . 'inc/Base/BaseController.php';
+require_once PLUGIN_PATH . 'includes/Base/BaseController.php';
 
 final class Init
 {
@@ -26,9 +26,9 @@ final class Init
      */
     public static function get_services()
     {
-        require_once PLUGIN_PATH . 'inc/Pages/Admin.php';
-        require_once PLUGIN_PATH . 'inc/Base/Enqueue.php';
-        require_once PLUGIN_PATH . 'inc/Base/SettingsLinks.php';
+        require_once PLUGIN_PATH . 'includes/Pages/Admin.php';
+        require_once PLUGIN_PATH . 'includes/Base/Enqueue.php';
+        require_once PLUGIN_PATH . 'includes/Base/SettingsLinks.php';
         return [
             Admin::class,
             Enqueue::class,

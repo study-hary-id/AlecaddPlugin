@@ -36,9 +36,9 @@ if ( ! defined('ABSPATH' ) ) {
 
 define( 'PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
-require_once PLUGIN_PATH . 'inc/Init.php';
-require_once PLUGIN_PATH . 'inc/Base/Activation.php';
-require_once PLUGIN_PATH . 'inc/Base/Deactivation.php';
+require_once PLUGIN_PATH . 'includes/Init.php';
+require_once PLUGIN_PATH . 'includes/Base/Activation.php';
+require_once PLUGIN_PATH . 'includes/Base/Deactivation.php';
 
 /**
  * Handle activations of the plugin.
