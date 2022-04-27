@@ -6,9 +6,9 @@
  * Plugin Name:       Simple Plugin
  * Plugin URI:        https://github.com/study-hary-id/SimplePluginTemplate
  * Description:       Handle the basics with this plugin.
- * Version:           1.0.0
- * Requires at least: 5.2
- * Requires PHP:      7.4
+ * Version:           1.0.1
+ * Requires at least: 5.6
+ * Requires PHP:      5.6
  * Author:            Muhammad Haryansyah
  * Author URI:        https://study-hary-id.github.io
  * License:           GPL v2 or later
@@ -48,56 +48,42 @@ if ( ! class_exists( 'SimplePlugin' ) ) {
         function __construct()
         {
             $this->plugin = plugin_basename( __FILE__ );
-            $this->create_post_type();
         }
 
         /**
-         * Add/register new action or filter to each hooks.
+         * Add/register services to wordpress hooks.
          *
          * @return void
          */
         function register()
         {
-            add_filter(
-                "plugin_action_links_$this->plugin",
-                array( $this, 'settings_link' )
-            );
+            add_filter( "plugin_action_links_$this->plugin", array( $this, 'settings_link' ) );
 
             add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
-
-            add_action( 'admin_menu', array( $this, 'add_admin_pages' ));
         }
 
-        /**
-         * Listener uses when activate the plugin.
-         */
         function activate()
         {
             flush_rewrite_rules();
         }
 
-        /**
-         * Listener uses when deactivate the plugin.
-         */
         function deactivate()
         {
             flush_rewrite_rules();
         }
 
-
         /**
-         * Add redirect link to the plugin's settings.
+         * Add custom link to the plugin list settings.
          *
-         * @param array $links  List of necessary links.
-         * @return array        Return list after added a new link element.
+         * @param array $links  Default global links.
+         * @return array        Modified global links.
          */
-        function settings_link($links)
+        function settings_link( $links )
         {
-            $settings_link = '<a href="admin.php?page=simple_plugin">Settings</a>';
+            $settings_link = '<a href="plugins.php">Settings</a>';
             array_push( $links, $settings_link );
             return $links;
         }
-
 
         /**
          * Enqueue stylesheet and javascript files.
@@ -107,68 +93,13 @@ if ( ! class_exists( 'SimplePlugin' ) ) {
         function enqueue()
         {
             wp_enqueue_style(
-                'simpleplugin',
+                'simple_plugin_css',
                 plugins_url( '/assets/css/style.css', __FILE__ )
             );
             wp_enqueue_script(
-                'simpleplugin',
+                'simple_plugin_js',
                 plugins_url( '/assets/js/script.js', __FILE__ )
             );
-        }
-
-
-        /**
-         * Import the template of custom admin pages.
-         *
-         * @return void
-         */
-        function admin_views()
-        {
-            require_once plugin_dir_path( __FILE__ ) . 'templates/admin.php';
-        }
-
-        /**
-         * Add/register new menu on admin side-bar.
-         *
-         * @return void
-         */
-        function add_admin_pages()
-        {
-            add_menu_page(
-                'Simple Plugin',
-                'Plugin',
-                'manage_options',
-                'simple_plugin',
-                array( $this, 'admin_views' ),
-                'dashicons-store',
-                110
-            );
-        }
-
-
-        /**
-         * Register new custom post type.
-         *
-         * This function behaves as a dependency before init create custom post type.
-         *
-         * @return void
-         */
-        function custom_post_type()
-        {
-            register_post_type(
-                'book',
-                [ 'public' => true, 'label' => 'Books' ]
-            );
-        }
-
-        /**
-         * Initialize custom post type by calling init hook.
-         *
-         * @return void
-         */
-        function create_post_type()
-        {
-            add_action( 'init', array( $this, 'custom_post_type' ) );
         }
     }
 
