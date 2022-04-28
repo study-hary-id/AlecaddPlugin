@@ -3,20 +3,20 @@
  * @package SimplePlugin
  */
 
-require_once PLUGIN_PATH . 'includes/Base/BaseController.php';
+require_once PLUGIN_PATH . 'includes/base/BaseController.php';
 
 final class Init
 {
-    /**
-     * Initialize a class.
-     *
-     * @param class  $class     Class from the services array.
-     * @return class instance   New instance of a given class.
-     */
+	/**
+	 * Initialize a class.
+	 *
+	 * @param  $class
+	 *
+	 * @return mixed
+	 */
     private static function instantiate($class)
     {
-        $service = new $class;
-        return $service;
+	    return new $class;
     }
 
     /**
@@ -26,11 +26,9 @@ final class Init
      */
     public static function get_services()
     {
-        require_once PLUGIN_PATH . 'includes/Pages/Admin.php';
-        require_once PLUGIN_PATH . 'includes/Base/Enqueue.php';
-        require_once PLUGIN_PATH . 'includes/Base/SettingsLinks.php';
+        require_once PLUGIN_PATH . 'includes/base/Enqueue.php';
+        require_once PLUGIN_PATH . 'includes/base/SettingsLinks.php';
         return [
-            Admin::class,
             Enqueue::class,
             SettingsLinks::class
         ];
