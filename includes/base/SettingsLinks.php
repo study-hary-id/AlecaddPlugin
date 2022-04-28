@@ -6,7 +6,7 @@
 class SettingsLinks extends BaseController
 {
     /**
-     * Register all actions and filters to WordPress hooks.
+     * Registering to WordPress hooks.
      *
      * @return void
      */
@@ -16,14 +16,14 @@ class SettingsLinks extends BaseController
     }
 
     /**
-     * Add custom link to the plugin.
+     * Add custom link to the plugin list settings.
      *
-     * @param array $links  List of global links.
-     * @return array        Updated global links.
+     * @param  array $links  Default global links.
+     * @return array         Modified global links.
      */
-    public function settings_link($links)
+    public function settings_link( $links )
     {
-        $settings_link = '<a href="admin.php?page=simple_plugin">Settings</a>';
+        $settings_link = '<a href="plugins.php">Settings</a>';
         array_push( $links, $settings_link );
         return $links;
     }

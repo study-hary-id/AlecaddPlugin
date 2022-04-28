@@ -4,7 +4,7 @@
  */
 
 /**
- * BaseController is an abstraction of Base Class and Pages.
+ * BaseController is an abstraction of Base Classes and Pages.
  */
 class BaseController
 {
