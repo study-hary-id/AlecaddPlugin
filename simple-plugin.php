@@ -5,8 +5,8 @@
 /**
  * Plugin Name:       Simple Plugin
  * Plugin URI:        https://github.com/study-hary-id/SimplePluginTemplate
- * Description:       Handle the basics with this plugin.
- * Version:           1.0.1
+ * Description:       Handle the basics with this plugin, based on classes as services.
+ * Version:           2.0.0
  * Requires at least: 5.6
  * Requires PHP:      5.6
  * Author:            Muhammad Haryansyah
@@ -16,104 +16,52 @@
  * Text Domain:       simple-plugin
  */
 /*
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
+Copyright (C) 2022  Muhammad Haryansyah
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-
-Copyright 2005-2015 Automattic, Inc.
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
-if ( ! defined( 'ABSPATH' ) ) {
-    die('-1');
+if ( ! defined('ABSPATH' ) ) {
+    die( '-1' );
 }
 
-if ( ! class_exists( 'SimplePlugin' ) ) {
-    /**
-     * Class SimplePlugin is a constructor for this plugin.
-     */
-    class SimplePlugin
-    {
-        private $plugin;
+define( 'PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
-        function __construct()
-        {
-            $this->plugin = plugin_basename( __FILE__ );
-        }
+require_once PLUGIN_PATH . 'includes/Init.php';
+require_once PLUGIN_PATH . 'includes/base/Activation.php';
+require_once PLUGIN_PATH . 'includes/base/Deactivation.php';
 
-        /**
-         * Add/register services to wordpress hooks.
-         *
-         * @return void
-         */
-        function register()
-        {
-            add_filter( "plugin_action_links_$this->plugin", array( $this, 'settings_link' ) );
+/**
+ * Handle activations of the plugin.
+ */
+function activate_simple_plugin() {
+    Activation::activate();
+}
+register_activation_hook( __FILE__, 'activate_simple_plugin' );
 
-            add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
-        }
+/**
+ * Handle deactivations of the plugin.
+ */
+function deactivate_simple_plugin() {
+    Deactivation::deactivate();
+}
+register_deactivation_hook( __FILE__, 'deactivate_simple_plugin' );
 
-        function activate()
-        {
-            flush_rewrite_rules();
-        }
-
-        function deactivate()
-        {
-            flush_rewrite_rules();
-        }
-
-        /**
-         * Add custom link to the plugin list settings.
-         *
-         * @param array $links  Default global links.
-         * @return array        Modified global links.
-         */
-        function settings_link( $links )
-        {
-            $settings_link = '<a href="plugins.php">Settings</a>';
-            array_push( $links, $settings_link );
-            return $links;
-        }
-
-        /**
-         * Enqueue stylesheet and javascript files.
-         *
-         * @return void
-         */
-        function enqueue()
-        {
-            wp_enqueue_style(
-                'simple_plugin_css',
-                plugins_url( '/assets/css/style.css', __FILE__ )
-            );
-            wp_enqueue_script(
-                'simple_plugin_js',
-                plugins_url( '/assets/js/script.js', __FILE__ )
-            );
-        }
-    }
-
-    // Create an instance and register hooks.
-    $simple_plugin = new SimplePlugin();
-    $simple_plugin->register();
-
-    // Register listener for activation of the plugin.
-    register_activation_hook(
-        __FILE__, array( $simple_plugin, 'activate' )
-    );
-
-    // Register listener for deactivation of the plugin.
-    register_deactivation_hook(
-        __FILE__, array( $simple_plugin, 'deactivate' )
-    );
+/**
+ * Initialize and register all of the services.
+ */
+if ( class_exists( 'Init' ) ) {
+	Init::register_services();
 }
