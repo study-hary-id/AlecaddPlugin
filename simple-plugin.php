@@ -6,9 +6,9 @@
  * Plugin Name:       Simple Plugin
  * Plugin URI:        https://github.com/study-hary-id/SimplePluginTemplate
  * Description:       Handle the basics with this plugin, based on classes as services.
- * Version:           1.0.0
- * Requires at least: 5.2
- * Requires PHP:      7.4
+ * Version:           2.0.0
+ * Requires at least: 5.6
+ * Requires PHP:      5.6
  * Author:            Muhammad Haryansyah
  * Author URI:        https://study-hary-id.github.io
  * License:           GPL v2 or later
