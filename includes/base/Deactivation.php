@@ -3,8 +3,10 @@
  * @package SimplePlugin
  */
 
-class Activation {
-    public static function activate() {
+class Deactivation
+{
+    public static function deactivate()
+    {
         flush_rewrite_rules();
     }
 }
