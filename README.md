@@ -2,6 +2,15 @@
 
 Simple WordPress plugin template that handles the basic creation/template of WordPress plugin.
 
+## Features
+
+1. [**Simple Plugin Template**](https://github.com/study-hary-id/SimplePluginTemplate/releases/tag/v1.0.1) is the
+   simplest starter of WordPress plugin template.
+2. **Classes Plugin Template** is the starter of WordPress plugin template based on classes as services.
+
+> _**Note**: Classes Plugin Template is on current `main` branch or
+> [v2.0.0](https://github.com/study-hary-id/SimplePluginTemplate/releases/tag/v2.0.0) tag._
+
 ## Plugin Header
 
 ```php
